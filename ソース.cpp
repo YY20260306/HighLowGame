@@ -8,7 +8,8 @@ int main() {
 
 	int guess = 1; //解答者の入力を受け取る変数
 
-	for (int i = 1; answer != guess; i++) {
+	int count; //解答した回数のカウント
+	for (count = 1; answer != guess; count++) {
 		std::cout << "正解だと思う数字を入力してください。" << std::endl;
 		std::cin >> guess;
 
@@ -20,7 +21,7 @@ int main() {
 		}
 		else {
 			std::cout << "正解です。おめでとう！" << std::endl;
-			std::cout << i << "回目の入力で正解しました！" << std::endl;
+			std::cout << count << "回目の入力で正解しました！" << std::endl;
 		}
 
 	}
