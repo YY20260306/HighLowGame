@@ -4,14 +4,23 @@
 
 int main() {
 	std::srand(static_cast<unsigned int>(std::time(nullptr))); //時刻を乱数の種として取得→型を符号なし整数に変換
-	int answer = std::rand() % 100 + 1; //100で割った余り0～99に+1することで1～100の乱数を取得
+	const int max_number = 100;
+	int answer = std::rand() % max_number + 1; //100で割った余り0～99に+1することで1～100の乱数を取得
 
-	int guess = 1; //解答者の入力を受け取る変数
-
-	int count; //解答した回数のカウント
-	for (count = 1; answer != guess; count++) {
-		std::cout << "正解だと思う数字を入力してください。" << std::endl;
+	int guess = 0; //解答者の入力を受け取る変数
+	int count = 0; //解答した回数のカウント
+	while (answer != guess) {
+		std::cout << "1から" << max_number << "の中で正解だと思う数字を入力してください。" << std::endl;
 		std::cin >> guess;
+
+		if (std::cin.fail()) {
+			std::cout << "数字以外を入力しないでください（怒）。" << std::endl;
+			std::cin.clear();
+			std::cin.ignore(1024, '\n');
+			continue;
+		}
+
+		count++;
 
 		if (answer > guess) {
 			std::cout << "もっと大きいです。" << std::endl;
