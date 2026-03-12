@@ -3,6 +3,9 @@
 #include <cstdlib>
 
 int main() {
+	char retry; //リトライするかの入力を受け取る変数
+
+	do{
 	std::srand(static_cast<unsigned int>(std::time(nullptr))); //時刻を乱数の種として取得→型を符号なし整数に変換
 	const int max_number = 100;
 	int answer = std::rand() % max_number + 1; //100で割った余り0～99に+1することで1～100の乱数を取得
@@ -32,7 +35,9 @@ int main() {
 			std::cout << "正解です。おめでとう！" << std::endl;
 			std::cout << count << "回目の入力で正解しました！" << std::endl;
 		}
-
 	}
+		std::cout << "再トライなさいますか？（y/n）" << endl;
+		std::cin >> retry;
+		}while(retry == 'y');
 return 0;
 }
