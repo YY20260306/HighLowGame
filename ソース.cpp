@@ -32,11 +32,11 @@ int main() {
 			std::cout << "もっと小さいです。" << std::endl;
 		}
 		else {
-			std::cout << "正解です。おめでとう！" << std::endl;
+			std::cout << "正解です。おめでとう！\n"; //\nの場合は文字列の中に含む
 			std::cout << count << "回目の入力で正解しました！" << std::endl;
 		}
 	}
-		std::cout << "再トライなさいますか？（y/n）" << endl;
+		std::cout << "再トライなさいますか？（y/n）" << std::endl;
 		std::cin >> retry;
 		}while(retry == 'y');
 return 0;
