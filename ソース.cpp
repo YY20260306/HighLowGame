@@ -4,9 +4,7 @@
 
 int main() {
 	char retry; //リトライするかの入力を受け取る変数
-
 	do {
-		retry = 'n';
 		std::srand(static_cast<unsigned int>(std::time(nullptr))); //時刻を乱数の種として取得→型を符号なし整数に変換
 		const int max_number = 10;
 		int answer = std::rand() % max_number + 1; //100で割った余り0～99に+1することで1～100の乱数を取得
@@ -38,11 +36,11 @@ int main() {
 			}
 		}
 		
-		while (true) { //ここwhile(true)の方がいいのか？
+		while (true) { //これでとりあえず無限ループ
 			std::cout << "再トライなさいますか？（y/n）" << std::endl;
 			std::cin >> retry;
 			if (retry == 'y' || retry == 'n') {
-				break;
+				break; //breakで自身を含む一番内側のループを脱出
 			}
 			else if (retry != 'y' && retry != 'n') {
 				std::cout << "yかnを入力してください（怒）。\n";
