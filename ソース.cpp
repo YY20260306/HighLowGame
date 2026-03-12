@@ -3,7 +3,8 @@
 #include <cstdlib>
 
 int main() {
-	char retry; //再トライの入力を受け取る変数
+	char retry; //リトライするかの入力を受け取る変数
+
 	do {
 		std::srand(static_cast<unsigned int>(std::time(nullptr))); //時刻を乱数の種として取得→型を符号なし整数に変換
 		const int max_number = 10;
@@ -36,7 +37,7 @@ int main() {
 			}
 		}
 		
-		while (true) { //これでとりあえず無限ループ
+		while (true) { //ここwhile(true)の方がいいのか？
 			std::cout << "再トライなさいますか？（y/n）" << std::endl;
 			std::cin >> retry;
 			if (retry == 'y' || retry == 'n') {
