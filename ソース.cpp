@@ -38,7 +38,7 @@ int main() {
 			}
 		}
 		
-		while (true) { //ここwhile(true)の方がいいのか？
+		while (true) { 
 			std::cout << "再トライなさいますか？（y/n）" << std::endl;
 			std::cin >> retry;
 			if (retry == 'y' || retry == 'n') {
