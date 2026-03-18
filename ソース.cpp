@@ -2,21 +2,47 @@
 #include <iostream>
 #include <cstdlib>
 
-int main() {
+bool AskRetry(){
 	char retry; //リトライするかの入力を受け取る変数
+	while (true) {
+		std::cout << "再トライなさいますか？（y/n）" << std::endl;
+		std::cin >> retry;
+
+		if (retry == 'y') {
+			return true;
+		}
+		else if (retry == 'n') {
+			return false;
+		}
+		else if (retry != 'y' && retry != 'n') {
+			std::cout << "yかnを入力してください（怒）。\n";
+			std::cin.clear();
+			std::cin.ignore(1024, '\n');
+		}
+	}
+}
+
+
+int main() {
 
 	do {
 		std::srand(static_cast<unsigned int>(std::time(nullptr))); //時刻を乱数の種として取得→型を符号なし整数に変換
 		const int max_number = 10;
 		int answer = std::rand() % max_number + 1; //100で割った余り0～99に+1することで1～100の乱数を取得
+		const int give_up = 0;
 
 		int guess = 0; //解答者の入力を受け取る変数
 		int count = 0; //解答した回数のカウント
-		while (answer != guess) {
+		while (true) {
 			std::cout << "1から" << max_number << "の中で正解だと思う数字を入力してください。" << std::endl;
+			std::cout << "ゲームをやり直すには" << give_up << "を入力してください。\n";
 			std::cin >> guess;
 
-			if (std::cin.fail()) {
+			if (guess == give_up) {
+				break;
+			}
+
+			else if (std::cin.fail()) {
 				std::cout << "数字以外を入力しないでください（怒）。" << std::endl;
 				std::cin.clear();
 				std::cin.ignore(1024, '\n');
@@ -36,20 +62,8 @@ int main() {
 				std::cout << count << "回目の入力で正解しました！" << std::endl;
 			}
 		}
+
 		
-		while (true) { //ここwhile(true)の方がいいのか？
-			std::cout << "再トライなさいますか？（y/n）" << std::endl;
-			std::cin >> retry;
-			if (retry == 'y' || retry == 'n') {
-				break; //breakで自身を含む一番内側のループを脱出
-			}
-			else if (retry != 'y' && retry != 'n') {
-				std::cout << "yかnを入力してください（怒）。\n";
-				std::cin.clear();
-				std::cin.ignore(1024, '\n');
-				continue;
-			}
-		}
-	} while (retry == 'y');
+		} while (AskRetry());
 	return 0;
 }
