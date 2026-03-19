@@ -2,9 +2,14 @@
 #include <iostream>
 #include <cstdlib>
 
-void PlayGame() {
+
+void InitGame() {
 	std::srand(static_cast<unsigned int>(std::time(nullptr))); //時刻を乱数の種として取得→型を符号なし整数に変換
-	const int max_number = 10;
+	std::cout << "\n< 数あてゲーム 2026 >\n\n";
+} //乱数の種作成とタイトル表示
+
+
+void PlayGame(int max_number) {
 	int answer = std::rand() % max_number + 1; //100で割った余り0～99に+1することで1～100の乱数を取得
 	const int give_up = 0;
 
@@ -65,9 +70,9 @@ bool AskRetry() {
 
 
 int main() {
-
+	InitGame();
 	do {
-		PlayGame();
+		PlayGame(10);
 	} while (AskRetry());
 	return 0;
 }
