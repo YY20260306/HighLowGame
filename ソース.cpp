@@ -2,7 +2,11 @@
 #include <iostream>
 #include <cstdlib>
 
-bool AskRetry(){
+void PlayGame() {
+
+}
+
+bool AskRetry() {
 	char retry; //リトライするかの入力を受け取る変数
 	while (true) {
 		std::cout << "再トライなさいますか？（y/n）" << std::endl;
@@ -60,10 +64,11 @@ int main() {
 			else {
 				std::cout << "正解です。おめでとう！\n"; //\nの場合は文字列の中に含む
 				std::cout << count << "回目の入力で正解しました！" << std::endl;
+				break; //これでループを抜けてAskRetry実行
 			}
 		}
 
-		
-		} while (AskRetry());
+
+	} while (AskRetry());
 	return 0;
 }
